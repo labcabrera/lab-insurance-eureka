@@ -22,7 +22,11 @@ levantado.
 Para crear la imagen docker se utiliza el plugin https://github.com/palantir/gradle-docker[palantir]
 de gradle.
 
-Para crear la imagen simplemente ejecutaremos `gradle build docker`.
+Para crear la imagen simplemente ejecutaremos:
+
+----
+$ gradle build docker
+----
 
 Y para ejecutar la imagen el comando run de docker:
 
@@ -34,18 +38,10 @@ Una vez ejecutándose el contenedor podremos acceder a la consola de Eureka desd
 
 http://localhost:8070/
 
-Despues para subir nuestra imagen simplemente crearemos el tag y haremos el push:
+A partir del plugin también podemos hacer el push a https://hub.docker.com/[Docker Hub]:
 
 ----
-$ docker images
-REPOSITORY                       TAG       IMAGE ID            CREATED             SIZE
-labcabrera/lab-insurance-eureka  latest    03795944d6fc        5 minutes ago       128MB
-
-...
-
-$ docker tag 03795944d6fc labcabrera/lab-insurance-eureka:1.0.0
-
-$ docker push labcabrera/lab-insurance-eureka:1.0.0
+$ gradle dockerPush
 ----
 
 == Resources
