@@ -1,4 +1,6 @@
-= lab-insurance-cloud-config-server
+= lab-insurance-eureka
+
+image:https://travis-ci.org/labcabrera/lab-insurance-eureka.svg?branch=master["Build Status", link="https://travis-ci.org/labcabrera/lab-insurance-eureka"]
 
 Servidor Eureka del proyecto https://github.com/labcabrera/lab-insurance.
 
