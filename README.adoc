@@ -2,7 +2,20 @@
 
 image:https://travis-ci.org/labcabrera/lab-insurance-eureka.svg?branch=master["Build Status", link="https://travis-ci.org/labcabrera/lab-insurance-eureka"]
 
-Servidor Eureka del proyecto https://github.com/labcabrera/lab-insurance.
+Servidor Eureka del proyecto https://github.com/labcabrera/lab-insurance[lab-insurance].
+
+== Configuracion
+
+La configuración de Eureka se resuelve a través de
+https://cloud.spring.io/spring-cloud-config/[Spring Cloud Config] de modo que es necesario tener
+levantado este servicio.
+
+Para ello lo más sencillo será levantar en local la imagen del proyecto
+https://github.com/labcabrera/lab-insurance-cloud-config-server[lab-insurance-cloud-config-server].
+
+En el fichero _src/main/resources/bootstrap.yml_ podemos configurar los perfiles que deseemos.
+También se ha incluído uno que obtiene la configuración de AWS, aunque generalmente no estará
+levantado.
 
 == Plugin de Docker
 
@@ -14,8 +27,12 @@ Para crear la imagen simplemente ejecutaremos `gradle build docker`.
 Y para ejecutar la imagen el comando run de docker:
 
 ----
-$ docker run -p 8888:8888 -t labcabrera/lab-insurance-eureka
+$ docker run -i -p 8070:8070 -t labcabrera/lab-insurance-eureka
 ---- 
+
+Una vez ejecutándose el contenedor podremos acceder a la consola de Eureka desde:
+
+http://localhost:8070/
 
 Despues para subir nuestra imagen simplemente crearemos el tag y haremos el push:
 
