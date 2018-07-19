@@ -1,25 +1,21 @@
 buildscript {
   ext {
-    springBootVersion = '2.0.1.RELEASE'
+    springBootVersion         = '2.0.3.RELEASE'
+    springCloudVersion        = 'Finchley.RELEASE'
+    palantirPluginVersion     = '0.20.1'
   }
   repositories {
     mavenCentral()
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
+    maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
     classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.19.2')
+    classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:${palantirPluginVersion}")
   }
 }
 
 group = 'org.lab.insurance.eureka'
 version = version
-
-ext {
-  springCloudVersion = 'Finchley.M9'
-}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -31,7 +27,6 @@ sourceCompatibility = 1.8
 
 repositories {
   mavenCentral()
-  maven { url "https://repo.spring.io/milestone" }
 }
 
 dependencyManagement {
@@ -43,7 +38,6 @@ dependencyManagement {
 dependencies {
   compile "org.springframework.cloud:spring-cloud-netflix-eureka-server"
   compile "org.springframework.cloud:spring-cloud-config-client"
-  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 docker {
